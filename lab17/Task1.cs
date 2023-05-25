@@ -37,7 +37,7 @@ namespace lab17
                         Console.Write("Enter value to compare to: ");
                         if (!int.TryParse(Console.ReadLine(), out num1))
                         {
-                            result = new List<int>();
+                            result = null;
                             break;
                         }
                         result = array.Where(el => el > num1).ToList();
@@ -47,12 +47,12 @@ namespace lab17
                         string[] input = Console.ReadLine().Split(' ', ',');
                         if (input.Length != 2)
                         {
-                            result = new List<int>();
+                            result = null;
                             break;
                         }
                         if (!int.TryParse(input[0], out num1) || !int.TryParse(input[1], out num2))
                         {
-                            result = new List<int>();
+                            result = null;
                             break;
                         }
                         result = array.Where(el => el < Max(num1, num2) && el > Min(num1, num2)).ToList();
@@ -89,7 +89,10 @@ namespace lab17
         public static void Show(List<int> array)
         {
             if (array == null)
+            {
                 Console.WriteLine();
+                return;
+            }
             Console.WriteLine(string.Join(", ", array));
         }
     }
